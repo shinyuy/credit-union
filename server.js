@@ -5,7 +5,7 @@ const cookieParser = require("cookie-parser");
 require('dotenv').config(); 
 const logger = require("morgan");
 //const Data = require("./models/data");
-const API_PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 const app = express();
 const fs = require("fs");
 const writeStream = fs.createWriteStream('test.xlsx');
@@ -412,5 +412,9 @@ router.get("/getUsers/:id", (req, res) => {
 // append /api for our http requests
 app.use("/api", router);
 
+
+if(process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'))
+}
 // launch our backend into a port
-app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
+app.listen(PORT, () => console.log(`LISTENING ON PORT ${PORT}`));

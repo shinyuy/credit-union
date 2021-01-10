@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "cd client && npm run build",
+    "install-client": "cd client && npm run install",
+    "heroku-postbuild": "npm run install-client && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"nodemon server.js\" \"cd client && npm start\" \"cd chat && node socketServer.js\""
+    "start": "node server.js",
+    "server": "concurrently \"nodemon server.js\" \"cd client && npm start\"" // \"cd chat && node socketServer.js\""
   },
   "author": "",
   "license": "ISC",
