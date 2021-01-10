@@ -34,7 +34,7 @@ const { admin } = require('./middlewares/admin');
 writeStream.write(`Name, Loan Amount, Annual Interest, Repayment Period, Monthly Payment, Total Payment, Total Interest \n`);
 
 // Connect to database
-const dbRoute = 'mongodb://microapp:microapp1@ds119606.mlab.com:19606/microapp';
+const dbRoute = `mongodb+srv://marcel:${process.env.password}@cluster0.cg1xp.mongodb.net/<dbname>?retryWrites=true&w=majority`;
 mongoose.connect(
   dbRoute,
   { useNewUrlParser: true }
